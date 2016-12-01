@@ -1,0 +1,48 @@
+<h1>aplications</h1>
+<% formNewEdit||= "Default" %>
+<h1 class="text-center">  <%= formNewEdit %> Applications</h1>
+<%= form_for @application , method: (formNewEdit.downcase == 'edit' ? 'put' : 'post') do |f| %>
+  <% if @application.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@aplication.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2>
+        <ul>
+          <% @application.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="form-group">
+    <%= f.label :nombre%>
+    <%= f.text_field :nombre, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :descripción%>
+    <%= f.text_field :descripcion, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :dominio%>
+    <%= f.text_field :dominio, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :precio%>
+    <%= f.text_field :precio, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :imagen_principal%>
+    <%= f.text_field :imagen_principal, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :icono%>
+    <%= f.text_field :icono, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :puntuacion%>
+    <%= f.text_field :puntuacion, class: "form-control"%>
+  </div>
+  <%= f.submit "#{formNewEdit} aplications", class: "btn btn-primary" %>
+  <!-- <a href="<%= airports_path %>" class="btn btn-default"> View all </a> -->
+<% end %>
